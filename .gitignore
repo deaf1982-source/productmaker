@@ -1,0 +1,6 @@
+node_modules/
+control.config.json
+.control-token
+*.log
+.DS_Store
+.env

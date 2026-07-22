@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0b0f17" />
+    <title>Control Panel</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Login -->
+    <section id="login" class="login">
+      <div class="login-card">
+        <h1>🎛️ Control Panel</h1>
+        <p class="muted">데스크탑 프로젝트를 휴대폰에서 제어합니다.</p>
+        <label for="token">Access token</label>
+        <input
+          id="token"
+          type="password"
+          inputmode="text"
+          autocomplete="off"
+          placeholder="데스크탑 터미널에 표시된 토큰"
+        />
+        <button id="connectBtn">연결</button>
+        <p id="loginError" class="error" hidden></p>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" hidden>
+      <header class="topbar">
+        <span class="brand">🎛️ Control</span>
+        <span id="conn" class="conn">●</span>
+        <button id="logoutBtn" class="ghost">로그아웃</button>
+      </header>
+
+      <main>
+        <h2>프로세스</h2>
+        <div id="processes" class="cards"></div>
+
+        <h2>명령</h2>
+        <div id="commands" class="cards"></div>
+
+        <h2 class="logs-head">
+          로그
+          <select id="logSelect"></select>
+          <button id="clearLog" class="ghost small">지우기</button>
+        </h2>
+        <pre id="logView" class="log"></pre>
+      </main>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>

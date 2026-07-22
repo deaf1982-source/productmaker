@@ -1,0 +1,28 @@
+{
+  "$comment": "Copy this file to control.config.json and edit it for YOUR project. Paths are relative to 'projectRoot'.",
+  "projectRoot": "..",
+  "port": 4477,
+  "host": "0.0.0.0",
+  "processes": [
+    {
+      "id": "dev",
+      "name": "Dev Server",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "autostart": false
+    },
+    {
+      "id": "api",
+      "name": "API Server",
+      "command": "node",
+      "args": ["server.js"],
+      "autostart": false
+    }
+  ],
+  "commands": [
+    { "id": "install", "name": "Install deps", "command": "npm", "args": ["install"] },
+    { "id": "build", "name": "Build", "command": "npm", "args": ["run", "build"] },
+    { "id": "test", "name": "Run tests", "command": "npm", "args": ["test"] },
+    { "id": "lint", "name": "Lint", "command": "npm", "args": ["run", "lint"] }
+  ]
+}

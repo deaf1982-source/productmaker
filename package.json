@@ -1,0 +1,20 @@
+{
+  "name": "productmaker-control",
+  "version": "1.0.0",
+  "description": "Mobile-friendly control panel to run scripts, monitor status, and start/stop your desktop project's processes from your phone.",
+  "type": "module",
+  "bin": {
+    "productmaker-control": "src/server.js"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "init": "node src/server.js --init"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  }
+}
