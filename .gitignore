@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Secrets & local config
+.env
+
+# Generated reports
+reports/*.csv
+reports/*.html
+!reports/.gitkeep
+
+# OS
+.DS_Store

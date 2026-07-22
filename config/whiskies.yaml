@@ -1,0 +1,107 @@
+# 위스키 사전 (whiskey dictionary)
+#
+# 표기 흔들림(한글/영문/오타/애칭)을 하나의 항목으로 묶어 언급 수를 정확히 집계한다.
+#   id       : 내부 식별자 (영문 슬러그, 고유해야 함)
+#   display  : 리포트에 노출할 이름
+#   category : single_malt | blended | bourbon | rye | etc
+#   queries  : 각 소스에 실제로 검색할 질의어 목록.
+#              여러 표기를 넣어 폭넓게 잡고, 결과는 글 링크 기준으로 중복 제거한다.
+#              생략하면 display 하나만 검색한다.
+#
+# 새 위스키를 연재하고 싶으면 이 파일에 항목만 추가하면 된다.
+
+whiskies:
+  - id: balvenie-12-doublewood
+    display: "발베니 12 더블우드"
+    category: single_malt
+    queries: ["발베니 12", "발베니 더블우드", "Balvenie DoubleWood"]
+
+  - id: glenfiddich-12
+    display: "글렌피딕 12"
+    category: single_malt
+    queries: ["글렌피딕 12", "Glenfiddich 12"]
+
+  - id: macallan-12-double-cask
+    display: "맥캘란 12 더블캐스크"
+    category: single_malt
+    queries: ["맥캘란 12", "맥캘란 더블캐스크", "Macallan 12"]
+
+  - id: glenlivet-12
+    display: "글렌리벳 12"
+    category: single_malt
+    queries: ["글렌리벳 12", "Glenlivet 12"]
+
+  - id: lagavulin-16
+    display: "라가불린 16"
+    category: single_malt
+    queries: ["라가불린 16", "Lagavulin 16"]
+
+  - id: ardbeg-10
+    display: "아드벡 10"
+    category: single_malt
+    queries: ["아드벡 10", "아드벡 텐", "Ardbeg 10"]
+
+  - id: laphroaig-10
+    display: "라프로익 10"
+    category: single_malt
+    queries: ["라프로익 10", "라프로익 텐", "Laphroaig 10"]
+
+  - id: glenmorangie-original
+    display: "글렌모렌지 오리지널"
+    category: single_malt
+    queries: ["글렌모렌지 오리지널", "글렌모렌지 10", "Glenmorangie Original"]
+
+  - id: talisker-10
+    display: "탈리스커 10"
+    category: single_malt
+    queries: ["탈리스커 10", "Talisker 10"]
+
+  - id: bowmore-12
+    display: "보모어 12"
+    category: single_malt
+    queries: ["보모어 12", "Bowmore 12"]
+
+  - id: hibiki-harmony
+    display: "히비키 하모니"
+    category: blended
+    queries: ["히비키 하모니", "Hibiki Harmony"]
+
+  - id: yamazaki-12
+    display: "야마자키 12"
+    category: single_malt
+    queries: ["야마자키 12", "Yamazaki 12"]
+
+  - id: johnnie-walker-blue
+    display: "조니워커 블루"
+    category: blended
+    queries: ["조니워커 블루", "조니 블루", "Johnnie Walker Blue"]
+
+  - id: buffalo-trace
+    display: "버팔로 트레이스"
+    category: bourbon
+    queries: ["버팔로 트레이스", "버팔로트레이스", "Buffalo Trace"]
+
+  - id: makers-mark
+    display: "메이커스 마크"
+    category: bourbon
+    queries: ["메이커스 마크", "메이커스마크", "Makers Mark"]
+
+  - id: wild-turkey-101
+    display: "와일드터키 101"
+    category: bourbon
+    queries: ["와일드터키 101", "와일드 터키 101", "Wild Turkey 101"]
+
+  - id: redbreast-12
+    display: "레드브레스트 12"
+    category: single_malt
+    queries: ["레드브레스트 12", "Redbreast 12"]
+
+  - id: kavalan-classic
+    display: "카발란 클래식"
+    category: single_malt
+    queries: ["카발란 클래식", "Kavalan Classic"]
+
+# DCinside 위스키 갤러리 설정 (구조 변경 시 여기만 수정)
+dcinside:
+  gallery_id: "whiskey"
+  is_minor: true
