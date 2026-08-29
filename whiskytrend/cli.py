@@ -19,6 +19,7 @@ from pathlib import Path
 from . import __version__
 from .collector import collect
 from .dictionary import load_config, load_whiskies
+from .health import assess
 from .ranking import Period, rank_by, rising_stars
 from .report import write_csv, write_html
 from .sources import DCInsideSource, DemoSource, NaverBlogSource, NaverCafeSource
@@ -57,14 +58,18 @@ def _build_sources(names: list[str], config: dict) -> list:
     return sources
 
 
-def _print_summary(stats, period: Period, top: int) -> None:
+def _print_summary(stats, period: Period, top: int, suppress_rising: bool = False) -> None:
     ranked = rank_by(stats, period)[:top]
     label = {"d1": "최근 1일", "d7": "최근 7일", "d30": "최근 30일"}[period.value]
     print(f"\n== {label} 언급 랭킹 TOP {len(ranked)} ==")
     for i, s in enumerate(ranked, 1):
         val = getattr(s, period.value)
-        flag = " 🔥" if s.is_rising else ""
+        flag = " 🔥" if (s.is_rising and not suppress_rising) else ""
         print(f"{i:>2}. {s.whiskey.display:<18} {val:>4}건  (7일 {s.d7} / 30일 {s.d30}){flag}")
+
+    if suppress_rising:
+        print("\n== 🔥 급상승 == (저품질 수집으로 판정되어 이번 회차는 보류)")
+        return
 
     stars = rising_stars(stats)
     if stars:
@@ -95,6 +100,11 @@ def main(argv: list[str] | None = None) -> int:
         help="콘솔 요약 정렬 기간 (d1/d7/d30)",
     )
     parser.add_argument("--top", type=int, default=10, help="콘솔 요약에 출력할 개수")
+    parser.add_argument(
+        "--no-health-guard",
+        action="store_true",
+        help="수집량 급감 감지 시에도 급상승 판정을 보류하지 않고 원자료 그대로 출력",
+    )
     parser.add_argument("-v", "--verbose", action="store_true", help="상세 로그")
     parser.add_argument("--version", action="version", version=f"whiskytrend {__version__}")
     args = parser.parse_args(argv)
@@ -130,13 +140,30 @@ def main(argv: list[str] | None = None) -> int:
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     stamp = date.today().isoformat()
-    csv_path = write_csv(stats, out_dir / f"whisky_ranking_{stamp}.csv")
+
+    # 수집 건강도 점검: 직전 리포트 대비 수집량이 급감했으면 급상승 판정을 보류한다.
+    # (데모는 합성 데이터라 점검 대상에서 제외)
+    health = None
+    if not args.demo:
+        health = assess(stats, out_dir, stamp)
+    suppress_rising = bool(health and health.suppress_rising and not args.no_health_guard)
+    health_warning = health.message if (health and health.anomalous) else None
+
+    if health_warning:
+        print(f"\n⚠️  {health_warning}")
+        if args.no_health_guard:
+            print("    (--no-health-guard: 급상승 판정을 보류하지 않고 원자료 그대로 출력합니다.)")
+
+    csv_path = write_csv(
+        stats, out_dir / f"whisky_ranking_{stamp}.csv", suppress_rising=suppress_rising
+    )
     html_path = write_html(
         stats, out_dir / f"whisky_ranking_{stamp}.html",
         sources=used or source_names, demo=args.demo,
+        suppress_rising=suppress_rising, health_warning=health_warning,
     )
 
-    _print_summary(stats, Period(args.period), args.top)
+    _print_summary(stats, Period(args.period), args.top, suppress_rising=suppress_rising)
     print(f"\n📄 CSV : {csv_path}")
     print(f"📄 HTML: {html_path}")
     return 0

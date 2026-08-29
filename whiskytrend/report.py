@@ -34,7 +34,16 @@ def _momentum_pct(stats: WhiskeyStats) -> str:
     return f"{m * 100:+.0f}%"
 
 
-def write_csv(stats: list[WhiskeyStats], path: str | Path, period: Period = Period.WEEK) -> Path:
+def write_csv(
+    stats: list[WhiskeyStats],
+    path: str | Path,
+    period: Period = Period.WEEK,
+    suppress_rising: bool = False,
+) -> Path:
+    """랭킹 CSV를 쓴다.
+
+    suppress_rising=True 이면 급상승(rising) 컬럼을 비운다. 저품질 수집으로 판정된
+    회차에서 허위 급등을 원자료에 남기지 않기 위함(d7/prev7 등 수치 자체는 유지)."""
     path = Path(path)
     ranked = rank_by(stats, period)
     with open(path, "w", newline="", encoding="utf-8-sig") as f:
@@ -53,7 +62,7 @@ def write_csv(stats: list[WhiskeyStats], path: str | Path, period: Period = Peri
                     s.d30,
                     s.prev7,
                     _momentum_pct(s),
-                    "Y" if s.is_rising else "",
+                    "" if suppress_rising else ("Y" if s.is_rising else ""),
                     s.undated_total,
                     by_source,
                 ]
@@ -89,6 +98,9 @@ _HTML_TEMPLATE = Template(
                  padding: 10px 14px; margin: 0 10px 10px 0; }
   .rising-card b { font-size: 1.05rem; }
   .src { color: #888; font-size: .8rem; }
+  .warn { border: 1px solid #c0392b; background: #c0392b1a; border-radius: 8px;
+          padding: 12px 16px; margin-bottom: 20px; }
+  .warn b { color: #c0392b; }
 </style>
 </head>
 <body>
@@ -99,9 +111,18 @@ _HTML_TEMPLATE = Template(
     생성: {{ generated }} · 소스: {{ sources }} · 기간 정렬: 최근 7일
   </div>
 
+  {% if health_warning %}
+  <div class="warn">
+    <b>⚠️ 저품질 수집 경고</b><br>
+    {{ health_warning }}
+  </div>
+  {% endif %}
+
   <section>
     <h2>🔥 급상승 위스키 (연재 우선 후보)</h2>
-    {% if rising %}
+    {% if suppress_rising %}
+      <p class="src">저품질 수집으로 판정되어 이번 회차의 급상승 판정은 보류했습니다.</p>
+    {% elif rising %}
       {% for s in rising %}
         <div class="rising-card">
           <b>{{ s.whiskey.display }}</b><br>
@@ -139,7 +160,7 @@ _HTML_TEMPLATE = Template(
         {% for s in ranked %}
         <tr>
           <td class="rank">{{ loop.index }}</td>
-          <td>{{ s.whiskey.display }}{% if s.is_rising %} 🔥{% endif %}</td>
+          <td>{{ s.whiskey.display }}{% if s.is_rising and not suppress_rising %} 🔥{% endif %}</td>
           <td class="src">{{ s.whiskey.category }}</td>
           <td>{{ s.d1 }}</td>
           <td><b>{{ s.d7 }}</b></td>
@@ -168,6 +189,8 @@ def write_html(
     sources: list[str],
     demo: bool = False,
     period: Period = Period.WEEK,
+    suppress_rising: bool = False,
+    health_warning: str | None = None,
 ) -> Path:
     path = Path(path)
     ranked = rank_by(stats, period)
@@ -176,7 +199,9 @@ def write_html(
         sources=", ".join(sources) or "(없음)",
         demo=demo,
         ranked=ranked,
-        rising=rising_stars(stats),
+        rising=[] if suppress_rising else rising_stars(stats),
+        suppress_rising=suppress_rising,
+        health_warning=health_warning,
     )
     path.write_text(html, encoding="utf-8")
     return path
