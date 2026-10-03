@@ -101,6 +101,231 @@ whiskies:
     category: single_malt
     queries: ["카발란 클래식", "Kavalan Classic"]
 
+  - id: macallan-18-sherry
+    display: "맥캘란 18 셰리오크"
+    category: single_malt
+    queries: ["맥캘란 18", "Macallan 18"]
+
+  - id: macallan-15-double-cask
+    display: "맥캘란 15 더블캐스크"
+    category: single_malt
+    queries: ["맥캘란 15", "Macallan 15"]
+
+  - id: macallan-12-sherry
+    display: "맥캘란 12 셰리오크"
+    category: single_malt
+    queries: ["맥캘란 셰리오크", "Macallan Sherry Oak"]
+
+  - id: glenfiddich-15
+    display: "글렌피딕 15 솔레라"
+    category: single_malt
+    queries: ["글렌피딕 15", "Glenfiddich 15"]
+
+  - id: glenfiddich-18
+    display: "글렌피딕 18"
+    category: single_malt
+    queries: ["글렌피딕 18", "Glenfiddich 18"]
+
+  - id: glenlivet-founders
+    display: "글렌리벳 파운더스 리저브"
+    category: single_malt
+    queries: ["글렌리벳 파운더스", "Glenlivet Founder's Reserve"]
+
+  - id: glenlivet-18
+    display: "글렌리벳 18"
+    category: single_malt
+    queries: ["글렌리벳 18", "Glenlivet 18"]
+
+  - id: balvenie-14-caribbean
+    display: "발베니 14 카리비안캐스크"
+    category: single_malt
+    queries: ["발베니 14", "Balvenie 14"]
+
+  - id: balvenie-21-portwood
+    display: "발베니 21 포트우드"
+    category: single_malt
+    queries: ["발베니 21", "Balvenie 21"]
+
+  - id: glenmorangie-lasanta
+    display: "글렌모렌지 라산타"
+    category: single_malt
+    queries: ["글렌모렌지 라산타", "Glenmorangie Lasanta"]
+
+  - id: glenmorangie-quinta-ruban
+    display: "글렌모렌지 퀸타루반"
+    category: single_malt
+    queries: ["글렌모렌지 퀸타루반", "Glenmorangie Quinta Ruban"]
+
+  - id: glenmorangie-nectar
+    display: "글렌모렌지 넥타도르"
+    category: single_malt
+    queries: ["글렌모렌지 넥타도르", "Glenmorangie Nectar d'Or"]
+
+  - id: aberlour-a-bunadh
+    display: "아벨라워 아부나흐"
+    category: single_malt
+    queries: ["아벨라워 아부나흐", "Aberlour A'bunadh"]
+
+  - id: aberlour-12
+    display: "아벨라워 12"
+    category: single_malt
+    queries: ["아벨라워 12", "Aberlour 12"]
+
+  - id: glendronach-12
+    display: "글렌드로낙 12"
+    category: single_malt
+    queries: ["글렌드로낙 12", "GlenDronach 12"]
+
+  - id: glendronach-15
+    display: "글렌드로낙 15"
+    category: single_malt
+    queries: ["글렌드로낙 15", "GlenDronach 15"]
+
+  - id: dalmore-12
+    display: "달모어 12"
+    category: single_malt
+    queries: ["달모어 12", "Dalmore 12"]
+
+  - id: oban-14
+    display: "오반 14"
+    category: single_malt
+    queries: ["오반 14", "Oban 14"]
+
+  - id: highland-park-12
+    display: "하이랜드파크 12"
+    category: single_malt
+    queries: ["하이랜드파크 12", "하이랜드 파크 12", "Highland Park 12"]
+
+  - id: springbank-10
+    display: "스프링뱅크 10"
+    category: single_malt
+    queries: ["스프링뱅크 10", "스프링뱅크 텐", "Springbank 10"]
+
+  - id: ardbeg-uigeadail
+    display: "아드벡 우가달"
+    category: single_malt
+    queries: ["아드벡 우가달", "Ardbeg Uigeadail"]
+
+  - id: ardbeg-corryvreckan
+    display: "아드벡 코리브레칸"
+    category: single_malt
+    queries: ["아드벡 코리브레칸", "Ardbeg Corryvreckan"]
+
+  - id: laphroaig-quarter-cask
+    display: "라프로익 쿼터캐스크"
+    category: single_malt
+    queries: ["라프로익 쿼터캐스크", "Laphroaig Quarter Cask"]
+
+  - id: lagavulin-8
+    display: "라가불린 8"
+    category: single_malt
+    queries: ["라가불린 8", "Lagavulin 8"]
+
+  - id: caol-ila-12
+    display: "카올일라 12"
+    category: single_malt
+    queries: ["카올일라 12", "Caol Ila 12"]
+
+  - id: bunnahabhain-12
+    display: "부나하벤 12"
+    category: single_malt
+    queries: ["부나하벤 12", "Bunnahabhain 12"]
+
+  - id: bruichladdich-classic
+    display: "브룩라디 클래식 라디"
+    category: single_malt
+    queries: ["브룩라디 클래식 라디", "Bruichladdich Classic Laddie"]
+
+  - id: kavalan-solist-vinho
+    display: "카발란 솔리스트 비뇨바리크"
+    category: single_malt
+    queries: ["카발란 솔리스트", "카발란 비뇨바리크", "Kavalan Solist Vinho Barrique"]
+
+  - id: yamazaki-18
+    display: "야마자키 18"
+    category: single_malt
+    queries: ["야마자키 18", "Yamazaki 18"]
+
+  - id: hakushu-12
+    display: "하쿠슈 12"
+    category: single_malt
+    queries: ["하쿠슈 12", "Hakushu 12"]
+
+  - id: hibiki-17
+    display: "히비키 17"
+    category: blended
+    queries: ["히비키 17", "Hibiki 17"]
+
+  - id: nikka-from-the-barrel
+    display: "니카 프롬 더 배럴"
+    category: blended
+    queries: ["니카 프롬 더 배럴", "Nikka From the Barrel"]
+
+  - id: johnnie-walker-black
+    display: "조니워커 블랙"
+    category: blended
+    queries: ["조니워커 블랙", "Johnnie Walker Black"]
+
+  - id: johnnie-walker-green
+    display: "조니워커 그린"
+    category: blended
+    queries: ["조니워커 그린", "Johnnie Walker Green"]
+
+  - id: chivas-regal-12
+    display: "시바스리갈 12"
+    category: blended
+    queries: ["시바스리갈 12", "시바스 리갈 12", "Chivas Regal 12"]
+
+  - id: royal-salute-21
+    display: "로얄살루트 21"
+    category: blended
+    queries: ["로얄살루트 21", "Royal Salute 21"]
+
+  - id: monkey-shoulder
+    display: "몽키숄더"
+    category: blended
+    queries: ["몽키숄더", "몽키 숄더", "Monkey Shoulder"]
+
+  - id: jameson
+    display: "제임슨"
+    category: etc
+    queries: ["제임슨 위스키", "Jameson Irish Whiskey"]
+
+  - id: jack-daniels-no7
+    display: "잭다니엘 No.7"
+    category: bourbon
+    queries: ["잭다니엘", "잭 다니엘", "Jack Daniel's"]
+
+  - id: woodford-reserve
+    display: "우드포드 리저브"
+    category: bourbon
+    queries: ["우드포드 리저브", "Woodford Reserve"]
+
+  - id: four-roses-single-barrel
+    display: "포로지스 싱글배럴"
+    category: bourbon
+    queries: ["포로지스 싱글배럴", "포로지스", "Four Roses"]
+
+  - id: bulleit-bourbon
+    display: "불렛 버번"
+    category: bourbon
+    queries: ["불렛 버번", "Bulleit Bourbon"]
+
+  - id: eagle-rare-10
+    display: "이글레어 10"
+    category: bourbon
+    queries: ["이글레어", "Eagle Rare"]
+
+  - id: knob-creek-9
+    display: "놉크릭 9"
+    category: bourbon
+    queries: ["놉크릭", "Knob Creek"]
+
+  - id: jim-beam-white
+    display: "짐빔"
+    category: bourbon
+    queries: ["짐빔 버번", "Jim Beam"]
+
 # DCinside 위스키 갤러리 설정 (구조 변경 시 여기만 수정)
 dcinside:
   gallery_id: "whiskey"
